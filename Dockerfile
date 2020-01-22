@@ -14,6 +14,6 @@ RUN npm run build
 
 COPY ./dist .
 
-EXPOSE 80
+EXPOSE 4000
 
 CMD ["pm2-runtime", "--json",".pm2.config.js"]

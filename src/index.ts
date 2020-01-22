@@ -1,8 +1,9 @@
 import express from 'express';
 
+import { port } from './configs/variables';
+
 const app = express();
-const port = 4000;
 
 app.get('/', (_req, res) => res.send('Hello World!'));
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`Aprta is live on port ${port}!`));
