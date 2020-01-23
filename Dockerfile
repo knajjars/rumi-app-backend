@@ -5,8 +5,8 @@ WORKDIR /usr/src/app
 COPY package.json ./
 COPY package-lock.json ./
 
-RUN npm install
-RUN npm install pm2 -g
+RUN npm install --quiet
+RUN npm install pm2 -g --quiet
 
 COPY . .
 

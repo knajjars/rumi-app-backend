@@ -1,10 +1,11 @@
 sudo: required
 language: node_js
+script: 'true'
 
 services:
   - docker
 
-deploy:
+build:
   - docker build -t knajjars/aprta-server .
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push knajjars/aprta-server
