@@ -9,7 +9,3 @@ build:
   - docker build -t knajjars/aprta-server .
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push knajjars/aprta-server
-
-script:
-  - sudo apt-get install sshpass
-  - sshpass -p "$RBP_PASSWROD" ssh pi@myrbp.duckdns.org
