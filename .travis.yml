@@ -2,7 +2,7 @@ sudo: required
 services:
   - docker
 
-after_success:
+deploy:
   - docker build -t knajjars/aprta-server .
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push knajjars/aprta-server
