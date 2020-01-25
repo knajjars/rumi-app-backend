@@ -1,1 +1,1 @@
-export * from './variables';
+export { default } from './variables';

@@ -8,4 +8,4 @@ if (typeof port === 'undefined') {
   throw new Error(`Missing variable ${port}`);
 }
 
-export { port };
+export default port;

@@ -1,9 +1,14 @@
 import express from 'express';
 
-import { port } from './configs';
+import port from './configs';
+import router from './routes';
 
 const app = express();
 
-app.get('/', (_req, res) => res.send('Hello World! I am Aprta.'));
+app.use('/', router);
+app.use((_req, res, next) => {
+  res.status(404).json('Route not found');
+  next();
+});
 
 app.listen(port, () => console.log(`Aprta is live on port ${port}!`));

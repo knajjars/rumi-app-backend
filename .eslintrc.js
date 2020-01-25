@@ -1,11 +1,6 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
-  extends: [
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
-    'plugin:import/errors',
-    'plugin:import/warnings',
-    'plugin:import/typescript'
-  ],
+  extends: ['airbnb-typescript/base', 'plugin:@typescript-eslint/recommended'],
   plugins: ['@typescript-eslint'],
   parserOptions: {
     ecmaVersion: 2018,
