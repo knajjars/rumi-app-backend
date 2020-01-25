@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { port } from './configs/variables';
+import { port } from './configs';
 
 const app = express();
 
