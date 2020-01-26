@@ -7,7 +7,7 @@ import { HttpStatusCodes, ApiError } from '../../common';
 export const loginUser: RequestHandler = async (req, res, next) => {
   try {
     await passport.authenticate('local', (err, user, failureDetails) => {
-      if (err !== null) {
+      if (err) {
         res.status(HttpStatusCodes.ServerError).json({ message: 'An error ocurred.' });
         return;
       }
@@ -18,13 +18,13 @@ export const loginUser: RequestHandler = async (req, res, next) => {
       }
 
       req.login(user, err => {
-        if (err !== null) {
+        if (err) {
           res.status(HttpStatusCodes.ServerError).json({ message: 'An error ocurred.' });
           return;
         }
-        res.status(HttpStatusCodes.OK).json(user);
+        res.status(HttpStatusCodes.Ok).json(user);
       });
-    });
+    })(req, res, next);
   } catch (err) {
     logger.error(err);
     const error: ApiError = { message: 'Error logging user', status: HttpStatusCodes.ServerError };

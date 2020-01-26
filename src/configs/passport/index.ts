@@ -1,5 +1,5 @@
 import { Express } from 'express';
-import { PassportStatic } from 'passport';
+import passport from 'passport';
 import mongoose from 'mongoose';
 import ConnectMongo from 'connect-mongo';
 import session from 'express-session';
@@ -11,7 +11,7 @@ import localStrategy from './localStrategy';
 
 const MongoStore = ConnectMongo(session);
 
-const passportConfig = (app: Express, passport: PassportStatic) => {
+const passportConfig = (app: Express) => {
   passportSerializers(passport);
   localStrategy(passport);
   app.use(

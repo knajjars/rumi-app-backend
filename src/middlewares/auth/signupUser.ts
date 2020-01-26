@@ -26,7 +26,7 @@ export const signupUser: RequestHandler = async (req, res, next) => {
         email
       });
 
-      res.status(HttpStatusCodes.OK).json(createdUser);
+      res.status(HttpStatusCodes.Created).json(createdUser);
     });
   } catch (err) {
     logger.error(err);
