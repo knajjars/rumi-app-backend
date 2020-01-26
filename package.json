@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start": "nodemon --watch './src/**/*.ts' --ignore './src/**/*.spec.ts' --exec 'ts-node --files' ./src/index.ts"
+    "start": "nodemon --watch './src/**/*.ts' --ignore './src/**/*.spec.ts' --exec 'ts-node --files' ./src/app.ts"
   },
   "repository": {
     "type": "git",

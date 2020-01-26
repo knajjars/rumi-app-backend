@@ -1,17 +1,19 @@
 import { Express } from 'express';
-import passport from 'passport';
+import { PassportStatic } from 'passport';
 import mongoose from 'mongoose';
 import ConnectMongo from 'connect-mongo';
 import session from 'express-session';
 
 import { sessionSecret } from '../variables';
 
-import './serializers';
-import './localStrategy';
+import passportSerializers from './serializers';
+import localStrategy from './localStrategy';
 
 const MongoStore = ConnectMongo(session);
 
-const passportConfig = (app: Express) => {
+const passportConfig = (app: Express, passport: PassportStatic) => {
+  passportSerializers(passport);
+  localStrategy(passport);
   app.use(
     session({
       secret: sessionSecret!,

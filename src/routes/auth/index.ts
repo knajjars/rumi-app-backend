@@ -1,18 +1,14 @@
 import { Router } from 'express';
 
-import { validate } from '../../middlewares';
+import { validate, signupUser, loginUser } from '../../middlewares';
 
 import { loginPayloadValidation } from './loginPayloadValidation';
 import { signupPayloadValidation } from './signupPayloadValidation';
 
 const router = Router();
 
-router.post('/login', validate(loginPayloadValidation), (_req, res) => {
-  res.send('Logged in!');
-});
+router.post('/login', validate(loginPayloadValidation), loginUser);
 
-router.post('/signup', validate(signupPayloadValidation), (_req, res) => {
-  res.send('Signed up!');
-});
+router.post('/signup', validate(signupPayloadValidation), signupUser);
 
 export default router;

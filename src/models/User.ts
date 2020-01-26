@@ -10,7 +10,7 @@ const UserSchema = new mongoose.Schema(
     lastName: String,
     email: { type: String, required: true, unique: true, index: true },
     role: { type: String, enum: Object.values(UserRole), default: UserRole.Tenant },
-    phone: { type: String, unique: true },
+    phone: String,
     password: { type: String, required: true },
     requests: [
       {

@@ -1,6 +1,6 @@
 module.exports = [
   {
-    script: './dist/index.js',
+    script: './dist/app.js',
     name: 'aprta',
     exec_mode: 'cluster',
     instances: 2

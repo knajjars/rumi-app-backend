@@ -1,4 +1,5 @@
 import express, { Request, Response, NextFunction } from 'express';
+import passport from 'passport';
 
 import router from './routes';
 import { port, passportConfig, logger } from './configs';
@@ -10,7 +11,7 @@ const app = express();
 
 app.use(express.json());
 
-passportConfig(app);
+passportConfig(app, passport);
 
 app.use('/api', router);
 app.use('/*', (_req, _res, next) => {
