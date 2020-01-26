@@ -12,5 +12,5 @@ export interface User extends Document {
   role: UserRole;
   phone: string;
   password: string;
-  requersts: Request[];
+  requests: Request[];
 }
