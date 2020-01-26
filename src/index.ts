@@ -8,6 +8,8 @@ import './configs/db';
 
 const app = express();
 
+app.use(express.json());
+
 passportConfig(app);
 
 app.use('/api', router);
