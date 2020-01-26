@@ -1,1 +1,1 @@
-export { default } from './variables';
+export { port, dbURL } from './variables';
