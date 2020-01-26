@@ -2,6 +2,8 @@ import mongoose from 'mongoose';
 
 import { User as UserModel, UserRole } from '../common';
 
+import { ModelReference } from './modelReference';
+
 const UserSchema = new mongoose.Schema(
   {
     firstName: String,
@@ -13,7 +15,7 @@ const UserSchema = new mongoose.Schema(
     requests: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Request'
+        ref: ModelReference.Request
       }
     ]
   },
@@ -25,5 +27,5 @@ const UserSchema = new mongoose.Schema(
   }
 );
 
-const User: mongoose.Model<UserModel> = mongoose.model('User', UserSchema);
+const User: mongoose.Model<UserModel> = mongoose.model(ModelReference.User, UserSchema);
 export default User;
