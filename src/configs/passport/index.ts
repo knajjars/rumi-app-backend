@@ -15,7 +15,7 @@ const passportConfig = (app: Express) => {
   app.use(
     session({
       secret: sessionSecret!,
-      resave: true,
+      resave: false,
       saveUninitialized: true,
       store: new MongoStore({ mongooseConnection: mongoose.connection })
     })
