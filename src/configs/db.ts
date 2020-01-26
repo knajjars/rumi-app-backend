@@ -1,12 +1,12 @@
 import mongoose from 'mongoose';
 
-import { dbURL } from '.';
+import { dbURL, logger } from '.';
 
 mongoose
-  .connect(dbURL!, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(dbURL!, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: true, useCreateIndex: true })
   .then((x: any) => {
-    console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`);
+    logger.info(`Connected to Mongo! Database name: "${x.connections[0].name}"`);
   })
   .catch((err: Error) => {
-    console.error('Error connecting to mongo', err);
+    logger.info('Error connecting to mongo', err);
   });
