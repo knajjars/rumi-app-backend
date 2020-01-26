@@ -1,10 +1,10 @@
-import { Types } from 'mongoose';
+import { Types, Document } from 'mongoose';
 
 import { UserRole } from '../../dictionary';
 
 import { Request } from '.';
 
-export interface User {
+export interface User extends Document {
   id: Types.ObjectId;
   firstName: string;
   lastName: string;

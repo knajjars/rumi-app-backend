@@ -1,8 +1,8 @@
-import { Types } from 'mongoose';
+import { Types, Document } from 'mongoose';
 
 import { RequestStatus } from '../../dictionary';
 
-export interface Request {
+export interface Request extends Document {
   id: Types.ObjectId;
   ownerId: Types.ObjectId;
   tenantId: Types.ObjectId;
