@@ -21,6 +21,12 @@ module.exports = {
         groups: ['builtin', 'external', 'parent', 'sibling', 'index'],
         'newlines-between': 'always-and-inside-groups'
       }
+    ],
+    '@typescript-eslint/no-misused-promises': [
+      'error',
+      {
+        checksVoidReturn: false
+      }
     ]
   },
   parserOptions: {

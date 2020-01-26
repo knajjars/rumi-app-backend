@@ -8,9 +8,9 @@ const UserSchema = new mongoose.Schema(
   {
     firstName: String,
     lastName: String,
-    email: { type: String, required: true, unique: true },
-    role: { type: String, enum: ['admin', 'owner', 'tenant'], default: UserRole.Tenant },
-    phone: String,
+    email: { type: String, required: true, unique: true, index: true },
+    role: { type: String, enum: Object.values(UserRole), default: UserRole.Tenant },
+    phone: { type: String, unique: true },
     password: { type: String, required: true },
     requests: [
       {
@@ -26,6 +26,8 @@ const UserSchema = new mongoose.Schema(
     }
   }
 );
+
+UserSchema.index({ email: 1 });
 
 const User: mongoose.Model<UserModel> = mongoose.model(ModelReference.User, UserSchema);
 export default User;
