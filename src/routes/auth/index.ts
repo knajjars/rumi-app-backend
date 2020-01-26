@@ -7,7 +7,7 @@ router.post('/login', (_req, res) => {
 });
 
 router.post('/signup', (_req, res) => {
-  res.send('Logged out!');
+  res.send('Signed up!');
 });
 
 export default router;

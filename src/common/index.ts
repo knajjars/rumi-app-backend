@@ -1,2 +1,2 @@
-export { default as ApiError } from './ApirError';
+export * from './interfaces';
 export * from './dictionary';
