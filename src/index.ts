@@ -2,8 +2,7 @@ import express, { Request, Response, NextFunction } from 'express';
 
 import router from './routes';
 import { port } from './configs';
-import { ApiError } from './common';
-import { HttpStatusCodes } from './common/dictionary';
+import { ApiError, HttpStatusCodes } from './common';
 
 import './configs/db';
 

@@ -1,4 +1,4 @@
-import { HttpStatusCodes } from './dictionary';
+import { HttpStatusCodes } from '.';
 
 export default interface ApiError {
   message: string;
