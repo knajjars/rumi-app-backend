@@ -1,12 +1,30 @@
 import express, { Request, Response, NextFunction } from 'express';
+import session from 'express-session';
+import ConnectMongo from 'connect-mongo';
+import mongoose from 'mongoose';
+import 'passport';
 
+import passportConfig from './configs/passport';
 import router from './routes';
-import { port } from './configs';
+import { port, sessionSecret } from './configs';
 import { ApiError, HttpStatusCodes } from './common';
 
 import './configs/db';
 
+const MongoStore = ConnectMongo(session);
+
 const app = express();
+
+app.use(
+  session({
+    secret: sessionSecret!,
+    resave: true,
+    saveUninitialized: true,
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
+  })
+);
+
+passportConfig(app);
 
 app.use('/api', router);
 app.use('/*', (_req, _res, next) => {

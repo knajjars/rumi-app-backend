@@ -1,1 +1,1 @@
-export { port, dbURL } from './variables';
+export * from './variables';

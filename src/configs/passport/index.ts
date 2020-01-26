@@ -4,7 +4,9 @@ import passport from 'passport';
 import './serializers';
 import './localStrategy';
 
-export = (app: Express) => {
+const passportConfig = (app: Express) => {
   app.use(passport.initialize());
   app.use(passport.session());
 };
+
+export default passportConfig;
