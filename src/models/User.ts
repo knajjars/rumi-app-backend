@@ -8,10 +8,10 @@ const UserSchema = new mongoose.Schema(
   {
     firstName: String,
     lastName: String,
-    email: { type: String, required: true },
-    role: { type: String, enum: UserRole, default: UserRole.Tenant },
+    email: { type: String, required: true, unique: true },
+    role: { type: String, enum: ['admin', 'owner', 'tenant'], default: UserRole.Tenant },
     phone: String,
-    password: String,
+    password: { type: String, required: true },
     requests: [
       {
         type: mongoose.Schema.Types.ObjectId,
