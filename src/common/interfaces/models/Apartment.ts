@@ -1,8 +1,8 @@
 import { Types, Document } from 'mongoose';
 
-import { RequestStatus } from '../../dictionary';
+import { RequestStatus, ApartmentType } from '../../dictionary';
 
-export interface Amenities extends Document {
+export interface Amenities {
   bed: number;
   desk: boolean;
   stove: boolean;
@@ -10,15 +10,20 @@ export interface Amenities extends Document {
   washingMachine: boolean;
 }
 
-export interface Point extends Document {
-  lon: number;
-  lat: number;
+export enum LocationType {
+  Point = 'Point'
 }
 
-export interface Services extends Document {
+export interface Location {
+  type: LocationType;
+  coordinates: number[];
+}
+
+export interface Services {
   water: boolean;
   power: boolean;
   internet: boolean;
+  parking: boolean;
 }
 
 export interface Apartment extends Document {
@@ -33,13 +38,11 @@ export interface Apartment extends Document {
   deposit: number;
   activateRadius: boolean;
   tenantsAllowed: number;
-  apartmentType: string;
+  apartmentType: ApartmentType;
   availableFrom: Date;
   isAvailable: boolean;
   isFurnished: boolean;
   amenities: Amenities;
-  location: Point;
+  location: Location;
   services: Services;
-  conversationId: Types.ObjectId;
-  status: RequestStatus;
 }

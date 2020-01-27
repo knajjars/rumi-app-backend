@@ -1,27 +1,53 @@
-import mongoose, { mongo } from 'mongoose';
+import mongoose from 'mongoose';
 
-import { User as UserModel, UserRole } from '../common';
+import { LocationType, ApartmentType, Apartment as ApartmentModel } from '../common';
 
 import { ModelReference } from './modelReference';
 
-const UserSchema = new mongoose.Schema(
+const ApartmentSchema = new mongoose.Schema(
   {
     ownerId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: ModelReference.User
     },
     title: { type: String, required: true },
-    lastName: String,
-    email: { type: String, required: true, unique: true, index: true },
-    role: { type: String, enum: Object.values(UserRole), default: UserRole.Tenant },
-    phone: { type: String, unique: true },
-    password: { type: String, required: true },
-    requests: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: ModelReference.Request
+    bedrooms: { type: Number, required: true },
+    images: [{ type: String }],
+    description: { type: String, required: false },
+    area: { type: Number },
+    price: { type: Number },
+    deposit: { type: Number },
+    activateRadius: { type: Boolean },
+    tenantsAllowed: { type: Number },
+    apartmentType: { type: String, enum: Object.values(ApartmentType), default: ApartmentType.PrivateRoom },
+    availableFrom: { type: Date, default: new Date() },
+    isAvailable: Boolean,
+    isFurnished: Boolean,
+    amenities: {
+      bed: Number,
+      desk: Boolean,
+      stove: Boolean,
+      fridge: Boolean,
+      washingMachine: Boolean
+    },
+    location: {
+      type: {
+        type: String,
+        enum: ['Point'],
+        default: LocationType.Point,
+        required: true
+      },
+      coordinates: {
+        type: [Number],
+        required: true
       }
-    ]
+    },
+    services: {
+      water: Boolean,
+      power: Boolean,
+      internet: Boolean,
+      parking: Boolean
+    }
   },
   {
     timestamps: {
@@ -31,7 +57,5 @@ const UserSchema = new mongoose.Schema(
   }
 );
 
-UserSchema.index({ email: 1 });
-
-const User: mongoose.Model<UserModel> = mongoose.model(ModelReference.User, UserSchema);
-export default User;
+const Apartment: mongoose.Model<ApartmentModel> = mongoose.model(ModelReference.Apartment, ApartmentSchema);
+export default Apartment;
