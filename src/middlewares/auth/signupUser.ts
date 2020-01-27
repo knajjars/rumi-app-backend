@@ -3,12 +3,12 @@ import bcrypt from 'bcrypt';
 
 import { logger } from '../../configs';
 import { UserModel } from '../../models';
-import { HttpStatusCodes, SignupPayload, User, ApiError } from '../../common';
+import { HttpStatusCodes, SignupRequestPayload, User, ApiError } from '../../common';
 
 const bcryptSalt = 10;
 
 export const signupUser: RequestHandler = async (req, res, next) => {
-  const { firstName, lastName, password, email } = req.body as SignupPayload;
+  const { firstName, lastName, password, email } = req.body as SignupRequestPayload;
 
   try {
     await UserModel.findOne({ email }, 'email', async (_err, user) => {
@@ -25,8 +25,12 @@ export const signupUser: RequestHandler = async (req, res, next) => {
         password: hashPass,
         email
       });
-
-      res.status(HttpStatusCodes.Created).json(createdUser);
+      req.login(createdUser, err => {
+        if (err) {
+          return next(err);
+        }
+        res.status(HttpStatusCodes.Created).json({ message: 'Signed up' });
+      });
     });
   } catch (err) {
     logger.error(err);

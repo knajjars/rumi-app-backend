@@ -20,7 +20,7 @@ export const loginUser: RequestHandler = async (req, res, next) => {
         if (err) {
           throw new Error(err);
         }
-        res.status(HttpStatusCodes.Ok).json(user);
+        res.status(HttpStatusCodes.Ok).json({ message: 'Logged in' });
       });
     })(req, res, next);
   } catch (err) {

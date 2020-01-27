@@ -1,6 +1,6 @@
 import { Types, Document } from 'mongoose';
 
-import { RequestStatus, ApartmentType } from '../../dictionary';
+import { ApartmentType } from '../../dictionary';
 
 export interface Amenities {
   bed: number;
