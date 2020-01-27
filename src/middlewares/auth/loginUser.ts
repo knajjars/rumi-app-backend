@@ -25,7 +25,7 @@ export const loginUser: RequestHandler = async (req, res, next) => {
     })(req, res, next);
   } catch (err) {
     logger.error('Error logging user', err);
-    const error: ApiError = { message: 'Error logging user', status: HttpStatusCodes.ServerError };
+    const error: ApiError = new ApiError('Error logging user', HttpStatusCodes.ServerError);
     next(error);
   }
 };

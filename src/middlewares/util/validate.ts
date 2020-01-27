@@ -3,7 +3,7 @@ import { RequestHandler } from 'express';
 
 import { HttpStatusCodes } from '../../common';
 
-const validate = (validations: ValidationChain[]): RequestHandler => {
+export const validate = (validations: ValidationChain[]): RequestHandler => {
   return async (req, res, next) => {
     await Promise.all(validations.map(validation => validation.run(req)));
 
@@ -15,5 +15,3 @@ const validate = (validations: ValidationChain[]): RequestHandler => {
     res.status(HttpStatusCodes.BadRequest).json({ errors: errors.array() });
   };
 };
-
-export default validate;

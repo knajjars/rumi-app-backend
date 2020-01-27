@@ -30,7 +30,7 @@ export const signupUser: RequestHandler = async (req, res, next) => {
     });
   } catch (err) {
     logger.error(err);
-    const error: ApiError = { message: 'Error creating user', status: HttpStatusCodes.ServerError };
+    const error: ApiError = new ApiError('Error creating user', HttpStatusCodes.ServerError);
     next(error);
   }
 };
