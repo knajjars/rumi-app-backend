@@ -5,10 +5,8 @@ services:
     container_name: aprta-server
     restart: always
     build: .
-    environment:
-      - PORT=4000
-      - MONGODB_URL=mongodb://mongo/aprta
-      - SESSION_SECRET=t0nSsrC7H9eGGjL9
+    env_file:
+      - .env
     ports:
       - '4000:4000'
     depends_on:
