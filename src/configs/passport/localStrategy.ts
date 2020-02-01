@@ -1,7 +1,7 @@
 import { PassportStatic } from 'passport';
 import LocalStrategy from 'passport-local';
-import bcrypt from 'bcrypt';
 
+import { comparePassword } from '../../middlewares';
 import User from '../../models/User';
 
 const localStrategy = (passport: PassportStatic) => {
@@ -18,7 +18,7 @@ const localStrategy = (passport: PassportStatic) => {
           if (foundUser === null) {
             return done(null, false, { message: 'Incorrect email' });
           }
-          if (!bcrypt.compareSync(password, foundUser.password)) {
+          if (!comparePassword(password, foundUser.password)) {
             return done(null, false, { message: 'Incorrect password' });
           }
           return done(null, foundUser);
