@@ -8,6 +8,7 @@ services:
     environment:
       - PORT=4000
       - MONGODB_URL=mongodb://mongo/aprta
+      - SESSION_SECRET=t0nSsrC7H9eGGjL9
     ports:
       - '4000:4000'
     depends_on:
