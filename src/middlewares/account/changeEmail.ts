@@ -13,11 +13,13 @@ export const changeEmail: RequestHandler = async (req, res, next) => {
     if (!comparePassword(password, loggedUser.password)) {
       const err = new ApiError('Provided password does not match', HttpStatusCodes.Unauthorized);
       next(err);
+      return;
     }
 
     if (loggedUser.email === email) {
       const err = new ApiError('A different email must be provided', HttpStatusCodes.BadRequest);
       next(err);
+      return;
     }
 
     const userWithEmail: User | null = await UserModel.findOne({ email });
@@ -25,6 +27,7 @@ export const changeEmail: RequestHandler = async (req, res, next) => {
     if (userWithEmail !== null) {
       const err = new ApiError('E-mail already in use', HttpStatusCodes.UnprocessableEntity);
       next(err);
+      return;
     }
 
     await UserModel.findByIdAndUpdate(loggedUser.id, { email });
