@@ -26,8 +26,8 @@ export const signupUser: RequestHandler = async (req, res, next) => {
         email
       });
 
-      const verificationCode: VerificationCode = await VerificationCodeModel.create({ userId: createdUser.id });
-
+      const verificationCode: VerificationCode = await VerificationCodeModel.create({ _user: createdUser.id });
+      // FIXME Do not send verification code in payload, but in an email
       res.status(HttpStatusCodes.Created).json({ message: 'Signed up', verificationCode });
     });
   } catch (err) {

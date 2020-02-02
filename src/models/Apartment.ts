@@ -30,7 +30,7 @@ const AmenitiesSchema = new mongoose.Schema({
 
 const ApartmentSchema = new mongoose.Schema(
   {
-    ownerId: {
+    _owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: ModelReference.User
     },

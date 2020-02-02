@@ -2,6 +2,8 @@ import { Types, Document } from 'mongoose';
 
 import { ApartmentType } from '../../dictionary';
 
+import { User } from './User';
+
 export interface ApartmentAmenities {
   bed: number;
   desk: boolean;
@@ -28,7 +30,7 @@ export interface ApartmentServices {
 
 export interface Apartment extends Document {
   id: Types.ObjectId;
-  ownerId: Types.ObjectId;
+  _owner: Types.ObjectId | User;
   title: string;
   bedrooms: number;
   images: string[];

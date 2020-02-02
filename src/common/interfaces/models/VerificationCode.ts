@@ -1,5 +1,7 @@
 import { Types, Document } from 'mongoose';
 
+import { User } from './User';
+
 export interface VerificationCode extends Document {
-  userId: Types.ObjectId;
+  _user: Types.ObjectId | User;
 }

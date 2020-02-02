@@ -8,9 +8,10 @@ import { ModelReference } from './modelReference';
 const VerificationCodeSchema = new mongoose.Schema(
   {
     _id: { type: String, default: shortid.generate },
-    userId: {
+    _user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: ModelReference.User
+      ref: ModelReference.User,
+      required: true
     }
   },
   {
