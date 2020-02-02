@@ -2,8 +2,8 @@ import { RequestHandler } from 'express';
 import bcrypt from 'bcrypt';
 
 import { logger } from '../../configs';
-import { UserModel } from '../../models';
-import { HttpStatusCodes, SignupRequestPayload, User, ApiError } from '../../common';
+import { UserModel, VerificationCodeModel } from '../../models';
+import { HttpStatusCodes, SignupRequestPayload, ApiError, User, VerificationCode } from '../../common';
 
 const bcryptSalt = 10;
 
@@ -25,12 +25,10 @@ export const signupUser: RequestHandler = async (req, res, next) => {
         password: hashPass,
         email
       });
-      req.login(createdUser, err => {
-        if (err) {
-          return next(err);
-        }
-        res.status(HttpStatusCodes.Created).json({ message: 'Signed up' });
-      });
+
+      const verificationCode: VerificationCode = await VerificationCodeModel.create({ userId: createdUser.id });
+
+      res.status(HttpStatusCodes.Created).json({ message: 'Signed up', verificationCode });
     });
   } catch (err) {
     logger.error(err);

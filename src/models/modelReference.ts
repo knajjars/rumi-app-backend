@@ -2,5 +2,6 @@ export enum ModelReference {
   Request = 'Request',
   User = 'User',
   Apartment = 'Apartment',
-  Conversation = 'Conversation'
+  Conversation = 'Conversation',
+  VerificationCodes = 'VerificationCode'
 }

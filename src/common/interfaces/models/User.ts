@@ -10,5 +10,6 @@ export interface User extends Document {
   role: UserRole;
   phone: string;
   password: string;
+  isActivated: boolean;
   requests: Types.ObjectId[];
 }
