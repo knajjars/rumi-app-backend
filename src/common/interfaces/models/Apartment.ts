@@ -2,7 +2,7 @@ import { Types, Document } from 'mongoose';
 
 import { ApartmentType } from '../../dictionary';
 
-export interface Amenities {
+export interface ApartmentAmenities {
   bed: number;
   desk: boolean;
   stove: boolean;
@@ -14,12 +14,12 @@ export enum LocationType {
   Point = 'Point'
 }
 
-export interface Location {
+export interface ApartmentLocation {
   type: LocationType;
   coordinates: number[];
 }
 
-export interface Services {
+export interface ApartmentServices {
   water: boolean;
   power: boolean;
   internet: boolean;
@@ -42,7 +42,7 @@ export interface Apartment extends Document {
   availableFrom: Date;
   isAvailable: boolean;
   isFurnished: boolean;
-  amenities: Amenities;
-  location: Location;
-  services: Services;
+  amenities: ApartmentAmenities;
+  location: ApartmentLocation;
+  services: ApartmentServices;
 }
