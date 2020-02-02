@@ -4,6 +4,30 @@ import { LocationType, ApartmentType, Apartment as ApartmentModel } from '../com
 
 import { ModelReference } from './modelReference';
 
+const PointSchema = new mongoose.Schema({
+  type: { type: String, enum: [LocationType.Point], default: LocationType.Point, required: true },
+  coordinates: {
+    type: [Number],
+    index: '2dsphere',
+    required: true
+  }
+});
+
+const ServicesSchema = new mongoose.Schema({
+  water: Boolean,
+  power: Boolean,
+  internet: Boolean,
+  parking: Boolean
+});
+
+const AmenitiesSchema = new mongoose.Schema({
+  bed: Number,
+  desk: Boolean,
+  stove: Boolean,
+  fridge: Boolean,
+  washingMachine: Boolean
+});
+
 const ApartmentSchema = new mongoose.Schema(
   {
     ownerId: {
@@ -23,31 +47,9 @@ const ApartmentSchema = new mongoose.Schema(
     availableFrom: { type: Date, default: new Date() },
     isAvailable: Boolean,
     isFurnished: Boolean,
-    amenities: {
-      bed: Number,
-      desk: Boolean,
-      stove: Boolean,
-      fridge: Boolean,
-      washingMachine: Boolean
-    },
-    location: {
-      type: {
-        type: String,
-        enum: ['Point'],
-        default: LocationType.Point,
-        required: true
-      },
-      coordinates: {
-        type: [Number],
-        required: true
-      }
-    },
-    services: {
-      water: Boolean,
-      power: Boolean,
-      internet: Boolean,
-      parking: Boolean
-    }
+    amenities: AmenitiesSchema,
+    location: PointSchema,
+    services: ServicesSchema
   },
   {
     timestamps: {
