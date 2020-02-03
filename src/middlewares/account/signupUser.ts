@@ -4,6 +4,7 @@ import bcrypt from 'bcrypt';
 import { logger } from '../../configs';
 import { UserModel, VerificationCodeModel } from '../../models';
 import { HttpStatusCodes, SignupRequestPayload, ApiError, User, VerificationCode } from '../../common';
+import { mailerClient } from '../util';
 
 const bcryptSalt = 10;
 
@@ -27,8 +28,10 @@ export const signupUser: RequestHandler = async (req, res, next) => {
       });
 
       const verificationCode: VerificationCode = await VerificationCodeModel.create({ _user: createdUser.id });
-      // FIXME Do not send verification code in payload, but in an email
-      res.status(HttpStatusCodes.Created).json({ message: 'Signed up', verificationCode });
+
+      await mailerClient.sendAccountActivation(createdUser.firstName, createdUser.email, verificationCode.id);
+
+      res.status(HttpStatusCodes.Created).json({ message: 'Signed up' });
     });
   } catch (err) {
     logger.error(err);
