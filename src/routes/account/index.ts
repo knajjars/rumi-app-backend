@@ -7,7 +7,8 @@ import {
   changeEmail,
   verifyEmail,
   isAuthenticated,
-  resetPassword
+  resetPassword,
+  changePassword
 } from '../../middlewares';
 
 import { loginPayloadValidation } from './loginPayloadValidation';
@@ -15,6 +16,7 @@ import { signupPayloadValidation } from './signupPayloadValidation';
 import { changeEmailPayloadValidation } from './changeEmailPayloadValidation';
 import { verifyEmailPayloadValidation } from './verifyEmailPayloadValidation';
 import { resetPasswordPayloadValidation } from './resetPasswordPayloadValidation';
+import { changePasswordPayloadValidation } from './changePasswordPayloadValidation';
 
 const router = Router();
 
@@ -27,5 +29,7 @@ router.post('/verify-email', validate(verifyEmailPayloadValidation), verifyEmail
 router.post('/change-email', isAuthenticated, validate(changeEmailPayloadValidation), changeEmail);
 
 router.post('/reset-password', validate(resetPasswordPayloadValidation), resetPassword);
+
+router.post('/change-password', validate(changePasswordPayloadValidation), changePassword);
 
 export default router;
