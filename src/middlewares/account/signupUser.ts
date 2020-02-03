@@ -1,12 +1,9 @@
 import { RequestHandler } from 'express';
-import bcrypt from 'bcrypt';
 
 import { logger } from '../../configs';
 import { UserModel, VerificationCodeModel } from '../../models';
 import { HttpStatusCodes, SignupRequestPayload, ApiError, User, VerificationCode } from '../../common';
-import { mailerClient } from '../util';
-
-const bcryptSalt = 10;
+import { mailerClient, hashPassword } from '../util';
 
 export const signupUser: RequestHandler = async (req, res, next) => {
   const { firstName, lastName, password, email } = req.body as SignupRequestPayload;
@@ -18,12 +15,10 @@ export const signupUser: RequestHandler = async (req, res, next) => {
         return;
       }
 
-      const salt = bcrypt.genSaltSync(bcryptSalt);
-      const hashPass = bcrypt.hashSync(password, salt);
       const createdUser: User = await UserModel.create({
         firstName,
         lastName,
-        password: hashPass,
+        password: hashPassword(password),
         email
       });
 
