@@ -34,6 +34,15 @@ class MailerClient {
       logger.error(error);
     }
   }
+
+  public async sendDeleteAccount(accountEmail: string) {
+    try {
+      const body = `{"sender":{"name":"DELETE REQUEST","email":"puravida@aprta.com"},"to":[{"email":"mourraille@me.com","name":"mauricio"},{"email":"knajjars@gmail.com","name":"khalil"} ],"templateId":11, "params":{"FNAME":"${accountEmail}"}}`;
+      await this.sendMail(body);
+    } catch (error) {
+      logger.error(error);
+    }
+  }
 }
 
 export const mailerClient = new MailerClient();
