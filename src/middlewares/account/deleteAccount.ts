@@ -1,22 +1,15 @@
 import { RequestHandler } from 'express';
 
 import { logger } from '../../configs';
-import { HttpStatusCodes, ApiError, DeleteAccountPayload } from '../../common';
-import { UserModel } from '../../models';
+import { HttpStatusCodes, ApiError, User } from '../../common';
+
 import { mailerClient } from '../util';
 
 export const deleteAccount: RequestHandler = async (req, res, next) => {
   try {
-    const { email } = req.body as DeleteAccountPayload;
+    const { email } = req.user as User;
 
-    const foundUser = await UserModel.findOne({ email });
-
-    if (foundUser === null) {
-      const err = new ApiError('Email does not match an account.', HttpStatusCodes.NotFound);
-      return next(err);
-    }
-
-    await mailerClient.sendDeleteAccount(foundUser.email);
+    await mailerClient.sendDeleteAccount(email);
 
     res.status(HttpStatusCodes.Created).json({ message: 'Delete request is scheduled.' });
   } catch (err) {

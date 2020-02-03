@@ -8,7 +8,8 @@ import {
   verifyEmail,
   isAuthenticated,
   resetPassword,
-  changePassword
+  changePassword,
+  deleteAccount
 } from '../../middlewares';
 
 import { loginPayloadValidation } from './loginPayloadValidation';
@@ -31,5 +32,7 @@ router.post('/change-email', isAuthenticated, validate(changeEmailPayloadValidat
 router.post('/reset-password', validate(resetPasswordPayloadValidation), resetPassword);
 
 router.post('/change-password', validate(changePasswordPayloadValidation), changePassword);
+
+router.post('/delete-account', isAuthenticated, deleteAccount);
 
 export default router;

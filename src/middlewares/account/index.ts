@@ -4,3 +4,4 @@ export * from './changeEmail';
 export * from './verifyEmail';
 export * from './resetPassword';
 export * from './changePassword';
+export * from './deleteAccount';
