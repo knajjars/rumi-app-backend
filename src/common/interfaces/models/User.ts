@@ -2,6 +2,8 @@ import { Types, Document } from 'mongoose';
 
 import { UserRole } from '../../dictionary';
 
+import { Request } from './Request';
+
 export interface User extends Document {
   id: Types.ObjectId;
   firstName: string;
@@ -10,5 +12,6 @@ export interface User extends Document {
   role: UserRole;
   phone: string;
   password: string;
-  requests: Types.ObjectId[];
+  isActivated: boolean;
+  _requests: Types.ObjectId[] | Request[];
 }

@@ -1,10 +1,11 @@
 import { Router } from 'express';
 
-import { validate, signupUser, loginUser, changeEmail } from '../../middlewares';
+import { validate, signupUser, loginUser, changeEmail, verifyEmail, isAuthenticated } from '../../middlewares';
 
 import { loginPayloadValidation } from './loginPayloadValidation';
 import { signupPayloadValidation } from './signupPayloadValidation';
 import { changeEmailPayloadValidation } from './changeEmailPayloadValidation';
+import { verifyEmailPayloadValidation } from './verifyEmailPayloadValidation';
 
 const router = Router();
 
@@ -12,6 +13,8 @@ router.post('/login', validate(loginPayloadValidation), loginUser);
 
 router.post('/signup', validate(signupPayloadValidation), signupUser);
 
-router.post('/change-email', validate(changeEmailPayloadValidation), changeEmail);
+router.post('/verify-email', validate(verifyEmailPayloadValidation), verifyEmail);
+
+router.post('/change-email', isAuthenticated, validate(changeEmailPayloadValidation), changeEmail);
 
 export default router;

@@ -12,7 +12,8 @@ const UserSchema = new mongoose.Schema(
     role: { type: String, enum: Object.values(UserRole), default: UserRole.Tenant },
     phone: String,
     password: { type: String, required: true },
-    requests: [
+    isActivated: { type: Boolean, default: false },
+    _requests: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: ModelReference.Request
@@ -21,8 +22,8 @@ const UserSchema = new mongoose.Schema(
   },
   {
     timestamps: {
-      createdAt: 'created_at',
-      updatedAt: 'updated_at'
+      createdAt: true,
+      updatedAt: true
     }
   }
 );

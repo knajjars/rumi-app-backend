@@ -5,7 +5,7 @@ import { LocationType, ApartmentType, Apartment as ApartmentModel } from '../com
 import { ModelReference } from './modelReference';
 
 const PointSchema = new mongoose.Schema({
-  type: { type: String, enum: [LocationType.Point], default: LocationType.Point, required: true },
+  type: { type: String, enum: Object.values(LocationType), default: LocationType.Point, required: true },
   coordinates: {
     type: [Number],
     index: '2dsphere',
@@ -30,7 +30,7 @@ const AmenitiesSchema = new mongoose.Schema({
 
 const ApartmentSchema = new mongoose.Schema(
   {
-    ownerId: {
+    _owner: {
       type: mongoose.Schema.Types.ObjectId,
       ref: ModelReference.User
     },
@@ -53,8 +53,8 @@ const ApartmentSchema = new mongoose.Schema(
   },
   {
     timestamps: {
-      createdAt: 'created_at',
-      updatedAt: 'updated_at'
+      createdAt: true,
+      updatedAt: true
     }
   }
 );

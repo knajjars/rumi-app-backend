@@ -2,17 +2,22 @@ import { RequestHandler } from 'express';
 import passport from 'passport';
 
 import { logger } from '../../configs';
-import { HttpStatusCodes, ApiError } from '../../common';
+import { HttpStatusCodes, ApiError, User } from '../../common';
 
 export const loginUser: RequestHandler = async (req, res, next) => {
   try {
-    await passport.authenticate('local', (err, user, failureDetails) => {
+    await passport.authenticate('local', (err, user: User, failureDetails) => {
       if (err !== null) {
         throw new Error(err);
       }
 
       if (!user) {
         res.status(HttpStatusCodes.Unauthorized).json(failureDetails);
+        return;
+      }
+
+      if (!user.isActivated) {
+        res.status(HttpStatusCodes.Forbidden).json({ message: 'Account email has not been activated' });
         return;
       }
 

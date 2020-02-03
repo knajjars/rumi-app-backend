@@ -30,6 +30,7 @@ export const changeEmail: RequestHandler = async (req, res, next) => {
       return;
     }
 
+    // FIXME  deactivate account and send email to new provided email
     await UserModel.findByIdAndUpdate(loggedUser.id, { email });
 
     const response: ChangeEmailResponsePayload = { email };
