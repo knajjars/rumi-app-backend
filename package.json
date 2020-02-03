@@ -1,7 +1,7 @@
 {
   "name": "aprta-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "API for apartment search",
   "main": "index.js",
   "scripts": {
     "build": "tsc",

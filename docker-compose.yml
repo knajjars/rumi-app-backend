@@ -7,6 +7,8 @@ services:
     build: .
     env_file:
       - .env
+    environment:
+      - MONGODB_URL=mongodb://mongo/aprta
     ports:
       - '4000:4000'
     depends_on:
