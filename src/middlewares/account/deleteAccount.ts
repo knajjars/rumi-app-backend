@@ -11,6 +11,7 @@ export const deleteAccount: RequestHandler = async (req, res, next) => {
 
     await mailerClient.sendDeleteAccount(email);
 
+    // FIXME develop cascade deletion
     res.status(HttpStatusCodes.Created).json({ message: 'Delete request is scheduled.' });
   } catch (err) {
     logger.error('Error requesting deletion.', err);

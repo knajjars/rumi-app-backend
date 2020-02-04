@@ -1,10 +1,9 @@
 import { Router } from 'express';
 
-import { UserRole } from '../../common';
-import { checkACL, searchApartments } from '../../middlewares';
+import { searchApartments, isAuthenticated } from '../../middlewares';
 
 const router = Router();
 
-router.get('/search', checkACL([UserRole.Owner]), searchApartments);
+router.get('/search', isAuthenticated, searchApartments);
 
 export default router;

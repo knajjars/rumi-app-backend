@@ -1,16 +1,15 @@
 import mongoose from 'mongoose';
 
-import { User as UserModel, UserRole } from '../common';
+import { User as UserModel } from '../common';
 
 import { ModelReference } from './modelReference';
 
 const UserSchema = new mongoose.Schema(
   {
-    firstName: String,
-    lastName: String,
-    email: { type: String, required: true, unique: true, index: true },
-    role: { type: String, enum: Object.values(UserRole), default: UserRole.Tenant },
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
     phone: String,
+    email: { type: String, required: true, unique: true, index: true },
     password: { type: String, required: true },
     isActivated: { type: Boolean, default: false },
     _requests: [

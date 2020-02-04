@@ -9,9 +9,9 @@ export const validate = (validations: ValidationChain[]): RequestHandler => {
 
     const errors = validationResult(req);
     if (errors.isEmpty()) {
-      req.body = matchedData(req, { locations: ['body'], includeOptionals: true });
-      req.params = matchedData(req, { locations: ['params'], includeOptionals: true });
-      req.query = matchedData(req, { locations: ['query'], includeOptionals: true });
+      req.body = matchedData(req, { locations: ['body'], includeOptionals: false });
+      req.params = matchedData(req, { locations: ['params'], includeOptionals: false });
+      req.query = matchedData(req, { locations: ['query'], includeOptionals: false });
       return next();
     }
 

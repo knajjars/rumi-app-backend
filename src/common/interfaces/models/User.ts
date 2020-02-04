@@ -1,7 +1,5 @@
 import { Types, Document } from 'mongoose';
 
-import { UserRole } from '../../dictionary';
-
 import { Request } from './Request';
 
 export interface User extends Document {
@@ -9,7 +7,6 @@ export interface User extends Document {
   firstName: string;
   lastName: string;
   email: string;
-  role: UserRole;
   phone: string;
   password: string;
   isActivated: boolean;

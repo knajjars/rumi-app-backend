@@ -4,3 +4,4 @@ export * from './ChangeEmailPayload';
 export * from './VerifyEmailPayload';
 export * from './ResetPasswordPayload';
 export * from './ChangePasswordPayload';
+export * from './UpdateUserPayload';
