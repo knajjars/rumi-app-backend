@@ -3,9 +3,15 @@ import fetch from 'node-fetch';
 import { sibKey, logger } from '../../configs';
 
 const SIB_API_URL = `https://api.sendinblue.com/v3/smtp/email`;
+<<<<<<< HEAD
 const ACTIVATION_TEMPLATE = 11;
 const DELEITION_TEMPLATE = 14;
 const PWDRESET_TEMPLATE = 11;
+=======
+const ACTIVATION_TEMPLATE = '11';
+const DELEITION_TEMPLATE = '14';
+const PWDRESET_TEMPLATE = '11';
+>>>>>>> 4f6c938bd2ded7b110b4873bd6960c14acdf9937
 
 class MailerClient {
   private async sendMail(body: string) {

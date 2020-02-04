@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 
 services:
   aprta-server:
@@ -10,13 +10,14 @@ services:
     environment:
       - MONGODB_URL=mongodb://mongo/aprta
     ports:
-      - '4000:4000'
+      - "4000:4000"
     depends_on:
-      - 'mongo'
+      - "mongo"
     links:
-      - 'mongo'
+      - "mongo"
   mongo:
     container_name: mongo
     image: mongo
     ports:
-      - '27017:27017'
+      - "27017:27017"
+    network_mode: "host"
