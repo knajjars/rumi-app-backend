@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 import { sibKey, logger } from '../../configs';
 
 const SIB_API_URL = `https://api.sendinblue.com/v3/smtp/email`;
-const ACTIVATION_TEMPLATE = '11';
+const ACTIVATION_TEMPLATE = 11;
 const DELEITION_TEMPLATE = 14;
 const PWDRESET_TEMPLATE = 11;
 
