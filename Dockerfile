@@ -6,10 +6,10 @@ COPY package.json ./
 COPY package-lock.json ./
 
 RUN npm install --quiet
-#RUN npm install pm2 -g --quiet
+RUN npm install pm2 -g --quiet
 
 COPY . .
 
 RUN npm run build
 
-#CMD ["pm2-runtime", "--json",".pm2.config.js"]
+CMD ["pm2-runtime", "--json",".pm2.config.js"]
