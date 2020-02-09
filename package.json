@@ -1,5 +1,5 @@
 {
-  "name": "aprta-server",
+  "name": "rumi-server",
   "version": "1.0.0",
   "description": "API for apartment search",
   "main": "index.js",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/knajjars/Aprta-Server.git"
+    "url": "git+https://github.com/knajjars/rumi-app-server.git"
   },
   "author": "",
   "license": "ISC",

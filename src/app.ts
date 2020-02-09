@@ -25,4 +25,4 @@ app.use((err: ApiError, _req: Request, res: Response, _next: NextFunction) => {
   res.status(err.status || HttpStatusCodes.ServerError).json({ message: err.message });
 });
 
-app.listen(port, () => logger.info(`Aprta is live on port ${port}`));
+app.listen(port, () => logger.info(`Rumi is live on port ${port}`));

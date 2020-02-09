@@ -25,7 +25,7 @@ class MailerClient {
 
   public async sendAccountActivation(firstName: string, email: string, token: string) {
     try {
-      const body = `{"sender":{"name":"Mauricio de Aprta 🎉","email":"puravida@aprta.com"},"to": [{"email": "${email}"}],"replyTo": { "email": "info@aprta.com"},"params": {"FNAME": "${firstName}", "TOKEN": "${token}" },"templateId": ${ACTIVATION_TEMPLATE} }`;
+      const body = `{"sender":{"name":"Mauricio de Rumi 🎉","email":"hola@rumi.app"},"to": [{"email": "${email}"}],"replyTo": { "email": "info@rumi.app"},"params": {"FNAME": "${firstName}", "TOKEN": "${token}" },"templateId": ${ACTIVATION_TEMPLATE} }`;
       await this.sendMail(body);
     } catch (error) {
       logger.error(error);
@@ -34,7 +34,7 @@ class MailerClient {
 
   public async sendResetPassword(firstName: string, email: string, token: string) {
     try {
-      const body = `{"sender":{"name":"Cambio de contraseña","email":"puravida@aprta.com"},"to": [{"email": "${email}"}],"replyTo": { "email": "info@aprta.com"},"params": {"FNAME": "${firstName}", "TOKEN": "${token}" },"templateId": ${PWDRESET_TEMPLATE}}}`;
+      const body = `{"sender":{"name":"Cambio de contraseña","email":"hola@rumi.app"},"to": [{"email": "${email}"}],"replyTo": { "email": "info@rumi.app"},"params": {"FNAME": "${firstName}", "TOKEN": "${token}" },"templateId": ${PWDRESET_TEMPLATE}}}`;
       await this.sendMail(body);
     } catch (error) {
       logger.error(error);
@@ -43,7 +43,7 @@ class MailerClient {
 
   public async sendDeleteAccount(accountEmail: string) {
     try {
-      const body = `{"sender":{"name":"Aprta: Delete Request","email":"puravida@aprta.com"},"to":[{"email":"mourraille@me.com","name":"mauricio"},{"email":"knajjars@gmail.com","name":"khalil"} ],"templateId":${DELEITION_TEMPLATE}}, "params":{"FNAME":"${accountEmail}"}}`;
+      const body = `{"sender":{"name":"rumi: Delete Request","email":"hola@rumi.app"},"to":[{"email":"mourraille@me.com","name":"mauricio"},{"email":"knajjars@gmail.com","name":"khalil"} ],"templateId":${DELEITION_TEMPLATE}}, "params":{"FNAME":"${accountEmail}"}}`;
       await this.sendMail(body);
     } catch (error) {
       logger.error(error);
@@ -52,7 +52,7 @@ class MailerClient {
 
   public async sendChangeEmail(firstName: string, newEmail: string, token: string) {
     try {
-      const body = `{"sender":{"name":"Solicitud para cambiar tu email","email":"puravida@aprta.com"},"to": [{"email": "${newEmail}"}],"replyTo": { "email": "info@aprta.com"},"params": {"FNAME": "${firstName}", "TOKEN": "${token}" },"templateId": ${CHANGE_EMAIL_TEMPLATE} }`;
+      const body = `{"sender":{"name":"Solicitud para cambiar tu email","email":"hola@rumi.app"},"to": [{"email": "${newEmail}"}],"replyTo": { "email": "info@rumi.app"},"params": {"FNAME": "${firstName}", "TOKEN": "${token}" },"templateId": ${CHANGE_EMAIL_TEMPLATE} }`;
       await this.sendMail(body);
     } catch (error) {
       logger.error(error);
