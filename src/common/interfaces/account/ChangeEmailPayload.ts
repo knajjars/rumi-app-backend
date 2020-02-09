@@ -1,8 +1,8 @@
 export interface ChangeEmailRequestPayload {
   email: string;
-  password: string;
+  code: string;
 }
 
 export interface ChangeEmailResponsePayload {
-  email: string;
+  message: string;
 }

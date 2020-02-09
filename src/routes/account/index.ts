@@ -4,23 +4,26 @@ import {
   validate,
   signupUser,
   loginUser,
-  changeEmail,
+  requestChangeEmail,
   verifyEmail,
   isAuthenticated,
   resetPassword,
   changePassword,
   deleteAccount,
-  updateUser
+  updateUser,
+  getUserIdFromVerificationCode,
+  changeEmail
 } from '../../middlewares';
 
 import {
   loginPayloadValidation,
   signupPayloadValidation,
-  changeEmailPayloadValidation,
+  requestChangeEmailPayloadValidation,
   verifyEmailPayloadValidation,
   resetPasswordPayloadValidation,
   changePasswordPayloadValidation,
-  updateUserPayloadValidation
+  updateUserPayloadValidation,
+  changeEmailPayloadValidation
 } from './payloadValidation';
 
 const router = Router();
@@ -29,13 +32,25 @@ router.post('/login', validate(loginPayloadValidation), loginUser);
 
 router.post('/signup', validate(signupPayloadValidation), signupUser);
 
-router.post('/verify-email', validate(verifyEmailPayloadValidation), verifyEmail);
+router.post('/verify-email', validate(verifyEmailPayloadValidation), getUserIdFromVerificationCode, verifyEmail);
 
-router.post('/change-email', isAuthenticated, validate(changeEmailPayloadValidation), changeEmail);
+router.post(
+  '/request-change-email',
+  isAuthenticated,
+  validate(requestChangeEmailPayloadValidation),
+  requestChangeEmail
+);
+
+router.post('/change-email', validate(changeEmailPayloadValidation), getUserIdFromVerificationCode, changeEmail);
 
 router.post('/reset-password', validate(resetPasswordPayloadValidation), resetPassword);
 
-router.post('/change-password', validate(changePasswordPayloadValidation), changePassword);
+router.post(
+  '/change-password',
+  validate(changePasswordPayloadValidation),
+  getUserIdFromVerificationCode,
+  changePassword
+);
 
 router.post('/update-user', isAuthenticated, validate(updateUserPayloadValidation), updateUser);
 
