@@ -5,4 +5,4 @@ export { verifyEmailPayloadValidation } from './verifyEmailPayloadValidation';
 export { resetPasswordPayloadValidation } from './resetPasswordPayloadValidation';
 export { changePasswordPayloadValidation } from './changePasswordPayloadValidation';
 export { updateUserPayloadValidation } from './updateUserPayloadValidation';
-export { changeEmailPayloadValidation } from './ChangeEmailPayloadValidation';
+export { changeEmailPayloadValidation } from './changeEmailPayloadValidation';
