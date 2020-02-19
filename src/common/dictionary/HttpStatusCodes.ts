@@ -6,5 +6,6 @@ export enum HttpStatusCodes {
   NotFound = 404,
   BadRequest = 400,
   UnprocessableEntity = 422,
-  ServerError = 500
+  ServerError = 500,
+  UnsupportedMediaType = 415
 }
