@@ -4,7 +4,7 @@ import shortid from 'shortid';
 import { Request } from 'express';
 
 import { UploadImagesRequestParams, ApiError, HttpStatusCodes } from '../../common';
-import { spaces } from '../../configs/spaces';
+import { spaces } from '../../configs';
 
 const MAX_COUNT: number = 30;
 
