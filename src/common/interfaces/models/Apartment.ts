@@ -53,7 +53,7 @@ export interface Apartment extends Document {
   isFurnished: boolean;
   location: ApartmentLocation;
   tenantsAllowed?: number;
-  images?: ApartmentImage[];
+  images: ApartmentImage[];
   description?: string;
   amenities?: ApartmentAmenities;
   services?: ApartmentServices;

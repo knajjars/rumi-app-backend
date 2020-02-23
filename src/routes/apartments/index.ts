@@ -6,7 +6,8 @@ import {
   validate,
   uploadImages,
   addImagesToApartment,
-  createApartment
+  createApartment,
+  validateApartmentExistance
 } from '../../middlewares';
 
 import {
@@ -24,6 +25,7 @@ router.post(
   '/:apartmentId/upload-images',
   isAuthenticated,
   validate(uploadImagePayloadValidation),
+  validateApartmentExistance,
   uploadImages,
   addImagesToApartment
 );
