@@ -5,11 +5,11 @@ import { ApartmentType, CurrencyUnit } from '../../dictionary';
 import { User } from './User';
 
 export interface ApartmentAmenities {
-  bed: number;
-  desk: boolean;
-  stove: boolean;
-  fridge: boolean;
-  washingMachine: boolean;
+  bed?: number;
+  desk?: boolean;
+  stove?: boolean;
+  fridge?: boolean;
+  washingMachine?: boolean;
 }
 
 export enum LocationType {
@@ -22,10 +22,10 @@ export interface ApartmentLocation {
 }
 
 export interface ApartmentServices {
-  water: boolean;
-  power: boolean;
-  internet: boolean;
-  parking: boolean;
+  water?: boolean;
+  power?: boolean;
+  internet?: boolean;
+  parking?: boolean;
 }
 
 export interface ApartmentImage {

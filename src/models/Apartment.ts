@@ -4,51 +4,66 @@ import { LocationType, ApartmentType, Apartment as ApartmentModel, CurrencyUnit 
 
 import { ModelReference } from './modelReference';
 
-const PointSchema = new mongoose.Schema({
-  type: {
-    type: String,
-    enum: Object.values(LocationType),
-    default: LocationType.Point,
-    required: true
+const PointSchema = new mongoose.Schema(
+  {
+    type: {
+      type: String,
+      enum: Object.values(LocationType),
+      default: LocationType.Point,
+      required: true
+    },
+    coordinates: {
+      type: [Number],
+      index: '2dsphere',
+      required: true
+    }
   },
-  coordinates: {
-    type: [Number],
-    index: '2dsphere',
-    required: true
-  }
-});
+  { _id: false }
+);
 
-const ServicesSchema = new mongoose.Schema({
-  water: Boolean,
-  power: Boolean,
-  internet: Boolean,
-  parking: Boolean
-});
-
-const AmenitiesSchema = new mongoose.Schema({
-  bed: Number,
-  desk: Boolean,
-  stove: Boolean,
-  fridge: Boolean,
-  washingMachine: Boolean
-});
-
-const ImagesSchema = new mongoose.Schema({
-  url: String,
-  key: String
-});
-
-const CurrencySchema = new mongoose.Schema({
-  unit: {
-    type: String,
-    enum: Object.values(CurrencyUnit),
-    required: true
+const ServicesSchema = new mongoose.Schema(
+  {
+    water: Boolean,
+    power: Boolean,
+    internet: Boolean,
+    parking: Boolean
   },
-  value: {
-    type: Number,
-    required: true
-  }
-});
+  { _id: false }
+);
+
+const AmenitiesSchema = new mongoose.Schema(
+  {
+    bed: Number,
+    desk: Boolean,
+    stove: Boolean,
+    fridge: Boolean,
+    washingMachine: Boolean
+  },
+  { _id: false }
+);
+
+const ImagesSchema = new mongoose.Schema(
+  {
+    url: String,
+    key: String
+  },
+  { _id: false }
+);
+
+const CurrencySchema = new mongoose.Schema(
+  {
+    unit: {
+      type: String,
+      enum: Object.values(CurrencyUnit),
+      required: true
+    },
+    value: {
+      type: Number,
+      required: true
+    }
+  },
+  { _id: false }
+);
 
 const ApartmentSchema = new mongoose.Schema(
   {

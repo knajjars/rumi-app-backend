@@ -5,14 +5,20 @@ import {
   isAuthenticated,
   validate,
   uploadImages,
-  addImagesToApartment
+  addImagesToApartment,
+  createApartment
 } from '../../middlewares';
 
-import { uploadImagePayloadValidation } from './payloadValidation';
+import {
+  uploadImagePayloadValidation,
+  createApartmentPayloadValidation
+} from './payloadValidation';
 
 const router = Router();
 
 router.get('/search', isAuthenticated, searchApartments);
+
+router.post('/', isAuthenticated, validate(createApartmentPayloadValidation), createApartment);
 
 router.post(
   '/:apartmentId/upload-images',
