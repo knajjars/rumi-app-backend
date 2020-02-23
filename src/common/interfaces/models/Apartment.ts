@@ -1,6 +1,6 @@
 import { Types, Document } from 'mongoose';
 
-import { ApartmentType } from '../../dictionary';
+import { ApartmentType, CurrencyUnit } from '../../dictionary';
 
 import { User } from './User';
 
@@ -28,23 +28,33 @@ export interface ApartmentServices {
   parking: boolean;
 }
 
+export interface ApartmentImage {
+  url: string;
+  key: string;
+}
+
+export interface ApartmentCurrency {
+  unit: CurrencyUnit;
+  value: number;
+}
+
 export interface Apartment extends Document {
   id: Types.ObjectId;
   _owner: Types.ObjectId | User;
   title: string;
   bedrooms: number;
-  images: string[];
-  description: string;
   area: number;
-  price: number;
-  deposit: number;
+  price: ApartmentCurrency;
+  deposit: ApartmentCurrency;
   activateRadius: boolean;
-  tenantsAllowed: number;
   apartmentType: ApartmentType;
   availableFrom: Date;
   isAvailable: boolean;
   isFurnished: boolean;
-  amenities: ApartmentAmenities;
   location: ApartmentLocation;
-  services: ApartmentServices;
+  tenantsAllowed?: number;
+  images?: ApartmentImage[];
+  description?: string;
+  amenities?: ApartmentAmenities;
+  services?: ApartmentServices;
 }

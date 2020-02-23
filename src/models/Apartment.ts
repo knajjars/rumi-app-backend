@@ -1,11 +1,16 @@
 import mongoose from 'mongoose';
 
-import { LocationType, ApartmentType, Apartment as ApartmentModel } from '../common';
+import { LocationType, ApartmentType, Apartment as ApartmentModel, CurrencyUnit } from '../common';
 
 import { ModelReference } from './modelReference';
 
 const PointSchema = new mongoose.Schema({
-  type: { type: String, enum: Object.values(LocationType), default: LocationType.Point, required: true },
+  type: {
+    type: String,
+    enum: Object.values(LocationType),
+    default: LocationType.Point,
+    required: true
+  },
   coordinates: {
     type: [Number],
     index: '2dsphere',
@@ -28,6 +33,23 @@ const AmenitiesSchema = new mongoose.Schema({
   washingMachine: Boolean
 });
 
+const ImagesSchema = new mongoose.Schema({
+  url: String,
+  key: String
+});
+
+const CurrencySchema = new mongoose.Schema({
+  unit: {
+    type: String,
+    enum: Object.values(CurrencyUnit),
+    required: true
+  },
+  value: {
+    type: Number,
+    required: true
+  }
+});
+
 const ApartmentSchema = new mongoose.Schema(
   {
     _owner: {
@@ -36,17 +58,21 @@ const ApartmentSchema = new mongoose.Schema(
     },
     title: { type: String, required: true },
     bedrooms: { type: Number, required: true },
-    images: [{ type: String }],
+    images: [ImagesSchema],
     description: { type: String, required: false },
-    area: { type: Number },
-    price: { type: Number },
-    deposit: { type: Number },
-    activateRadius: { type: Boolean },
+    area: { type: Number, required: true },
+    price: CurrencySchema,
+    deposit: CurrencySchema,
+    activateRadius: { type: Boolean, required: true },
     tenantsAllowed: { type: Number },
-    apartmentType: { type: String, enum: Object.values(ApartmentType), default: ApartmentType.PrivateRoom },
+    apartmentType: {
+      type: String,
+      enum: Object.values(ApartmentType),
+      required: true
+    },
     availableFrom: { type: Date, default: new Date() },
-    isAvailable: Boolean,
-    isFurnished: Boolean,
+    isAvailable: { type: Boolean, default: false },
+    isFurnished: { type: Boolean, required: true },
     amenities: AmenitiesSchema,
     location: PointSchema,
     services: ServicesSchema
@@ -59,5 +85,8 @@ const ApartmentSchema = new mongoose.Schema(
   }
 );
 
-const Apartment: mongoose.Model<ApartmentModel> = mongoose.model(ModelReference.Apartment, ApartmentSchema);
+const Apartment: mongoose.Model<ApartmentModel> = mongoose.model(
+  ModelReference.Apartment,
+  ApartmentSchema
+);
 export default Apartment;
