@@ -17,8 +17,6 @@ import {
 
 const router = Router();
 
-router.get('/search', isAuthenticated, searchApartments);
-
 router.post('/', isAuthenticated, validate(createApartmentPayloadValidation), createApartment);
 
 router.post(
@@ -29,5 +27,7 @@ router.post(
   uploadImages,
   addImagesToApartment
 );
+
+router.get('/search', isAuthenticated, searchApartments);
 
 export default router;

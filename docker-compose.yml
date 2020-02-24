@@ -4,7 +4,7 @@ services:
   rumi-server:
     container_name: rumi-server
     restart: always
-    build: .
+    image: knajjars/rumi-server
     env_file:
       - .env
     environment:
