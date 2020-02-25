@@ -1,22 +1,22 @@
-version: '3'
+version: "3"
 
 services:
   rumi-server:
     container_name: rumi-server
     restart: always
-    image: knajjars/rumi-server-arm
+    image: mourraille/rumi-armv7-1
     env_file:
       - .env
     environment:
       - MONGODB_URL=mongodb://mongo/rumi
     ports:
-      - '4000:4000'
+      - "4000:4000"
     depends_on:
-      - 'mongo'
+      - "mongo"
     links:
-      - 'mongo'
+      - "mongo"
   mongo:
     container_name: mongo
     image: mongo
     ports:
-      - '27017:27017'
+      - "27017:27017"
