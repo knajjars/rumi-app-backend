@@ -1,0 +1,11 @@
+sudo: required
+language: node_js
+script: 'true'
+
+services:
+  - docker
+
+script:
+  - docker buildx build --platform linux/arm/v7 -t knajjars/rumi-server-arm .
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push knajjars/rumi-server-arm

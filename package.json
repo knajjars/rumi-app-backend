@@ -7,7 +7,7 @@
     "build": "tsc",
     "start": "nodemon --watch './src/**/*.ts' --ignore './src/**/*.spec.ts' --exec 'ts-node --files' ./src/app.ts",
     "docker:push": "docker build -t knajjars/rumi-server . && docker push knajjars/rumi-server",
-    "docker:push:arm64": "docker buildx build --platform linux/arm64 -t knajjars/rumi-server-arm64 . && docker push knajjars/rumi-server-arm64"
+    "docker:push:arm": "docker buildx build --platform linux/arm/v7 -t knajjars/rumi-server-arm . && docker push knajjars/rumi-server-arm"
   },
   "repository": {
     "type": "git",
