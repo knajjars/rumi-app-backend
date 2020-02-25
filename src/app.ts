@@ -14,7 +14,7 @@ app.use(express.json());
 
 passportConfig(app);
 
-app.use('/api', router);
+app.use('', router);
 app.use('/*', (_req, _res, next) => {
   const error: ApiError = new ApiError('Route not found', HttpStatusCodes.NotFound);
   next(error);
