@@ -12,7 +12,8 @@ import {
 
 import {
   uploadImagePayloadValidation,
-  createApartmentPayloadValidation
+  createApartmentPayloadValidation,
+  searchApartmentPayloadValidation
 } from './payloadValidation';
 
 const router = Router();
@@ -28,6 +29,6 @@ router.post(
   addImagesToApartment
 );
 
-router.get('/search', searchApartments);
+router.get('/search', validate(searchApartmentPayloadValidation), searchApartments);
 
 export default router;

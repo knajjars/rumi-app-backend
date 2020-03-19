@@ -5,6 +5,11 @@ import { HttpStatusCodes } from '../../common';
 
 export const validate = (validations: ValidationChain[]): RequestHandler => {
   return async (req, res, next) => {
+    for (const key in req.query) {
+      try {
+        req.query[key] = JSON.parse(req.query[key]);
+      } catch {}
+    }
     await Promise.all(validations.map(validation => validation.run(req)));
 
     const errors = validationResult(req);
