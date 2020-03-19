@@ -28,6 +28,6 @@ router.post(
   addImagesToApartment
 );
 
-router.get('/search', isAuthenticated, searchApartments);
+router.get('/search', searchApartments);
 
 export default router;
