@@ -1,11 +1,27 @@
 import { RequestHandler } from 'express';
-import {} from 'mongoose';
+import { PaginateOptions } from 'mongoose';
 
 import { ApartmentModel } from '../../models';
-import { Apartment } from '../../common';
+import {
+  SearchApartmentRequestQuery,
+  Pagination,
+  SearchApartmentResponsePayload
+} from '../../common';
 
-export const searchApartments: RequestHandler = async (_req, res, _next) => {
-  const apartmentResults: Apartment[] = await ApartmentModel.find();
+export const searchApartments: RequestHandler = async (req, res, _next) => {
+  const query = req.query as SearchApartmentRequestQuery;
+
+  const { limit, offset }: Pagination = query.pagination;
+
+  const options: PaginateOptions = {
+    offset,
+    limit
+  };
+
+  const apartmentResults: SearchApartmentResponsePayload = await ApartmentModel.paginate(
+    {},
+    options
+  );
 
   res.json(apartmentResults);
 };

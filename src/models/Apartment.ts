@@ -1,4 +1,5 @@
-import mongoose from 'mongoose';
+import mongoose, { PaginateModel } from 'mongoose';
+import mongoosePaginate from 'mongoose-paginate-v2';
 
 import { LocationType, ApartmentType, Apartment as ApartmentModel, CurrencyUnit } from '../common';
 
@@ -100,7 +101,9 @@ const ApartmentSchema = new mongoose.Schema(
   }
 );
 
-const Apartment: mongoose.Model<ApartmentModel> = mongoose.model(
+ApartmentSchema.plugin(mongoosePaginate);
+
+const Apartment: PaginateModel<ApartmentModel> = mongoose.model(
   ModelReference.Apartment,
   ApartmentSchema
 );

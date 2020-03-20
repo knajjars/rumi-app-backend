@@ -1,3 +1,5 @@
+import { PaginateResult } from 'mongoose';
+
 import { ApartmentType } from '../../../common';
 import { ApartmentAmenities, ApartmentServices, Apartment } from '../models';
 
@@ -20,7 +22,4 @@ export interface SearchApartmentRequestQuery {
   coordinates: number[];
 }
 
-export interface SearchApartmentResponsePayload extends Pagination {
-  count: number;
-  results: Apartment[];
-}
+export interface SearchApartmentResponsePayload extends PaginateResult<Apartment> {}
