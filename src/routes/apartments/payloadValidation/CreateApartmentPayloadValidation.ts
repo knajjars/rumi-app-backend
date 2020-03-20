@@ -5,7 +5,7 @@ import {
   CurrencyUnit,
   ApartmentType,
   ApartmentLocation,
-  getTodayDate
+  getMaxDate
 } from '../../../common';
 
 import { validateServices, validateAmenities } from './custom';
@@ -44,7 +44,7 @@ export const createApartmentPayloadValidation: ValidationChain[] = [
     .exists()
     .isString()
     .isISO8601()
-    .isAfter(getTodayDate())
+    .isAfter(getMaxDate())
     .withMessage('Must not be date in the past'),
   check('isAvailable')
     .exists()

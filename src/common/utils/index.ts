@@ -1,1 +1,1 @@
-export * from './getTodayDate';
+export * from './getDate';

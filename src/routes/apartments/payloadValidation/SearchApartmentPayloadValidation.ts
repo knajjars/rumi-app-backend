@@ -2,7 +2,7 @@ import { isNumber } from 'util';
 
 import { check, ValidationChain } from 'express-validator';
 
-import { ApartmentType, getTodayDate, Pagination } from '../../../common';
+import { ApartmentType, getMaxDate, Pagination } from '../../../common';
 
 import { validateAmenities, validateServices } from './custom';
 
@@ -40,7 +40,7 @@ export const searchApartmentPayloadValidation: ValidationChain[] = [
     .optional()
     .isString()
     .isISO8601()
-    .isAfter(getTodayDate())
+    .isAfter(getMaxDate())
     .withMessage('Must not be date in the past'),
   check('isFurnished')
     .optional()
