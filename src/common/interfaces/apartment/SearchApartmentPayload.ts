@@ -1,7 +1,12 @@
 import { ApartmentType } from '../../../common';
 import { ApartmentAmenities, ApartmentServices, Apartment } from '../models';
 
+export interface Pagination {
+  limit: number;
+  offset: number;
+}
 export interface SearchApartmentRequestQuery {
+  pagination: Pagination;
   bedrooms?: number;
   area?: number;
   minPrice?: number;
@@ -15,9 +20,7 @@ export interface SearchApartmentRequestQuery {
   coordinates: number[];
 }
 
-export interface SearchApartmentResponsePayload {
+export interface SearchApartmentResponsePayload extends Pagination {
   count: number;
-  limit: number;
-  offset: number;
   results: Apartment[];
 }

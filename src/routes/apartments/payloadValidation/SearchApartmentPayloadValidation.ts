@@ -2,11 +2,20 @@ import { isNumber } from 'util';
 
 import { check, ValidationChain } from 'express-validator';
 
-import { ApartmentType, getTodayDate } from '../../../common';
+import { ApartmentType, getTodayDate, Pagination } from '../../../common';
 
 import { validateAmenities, validateServices } from './custom';
 
 export const searchApartmentPayloadValidation: ValidationChain[] = [
+  check('pagination')
+    .exists()
+    .custom(
+      (input: Pagination) =>
+        typeof input !== 'undefined' &&
+        typeof input.limit === 'number' &&
+        typeof input.offset === 'number'
+    )
+    .withMessage('Invalid pagination settings'),
   check('bedrooms')
     .optional()
     .isNumeric(),
