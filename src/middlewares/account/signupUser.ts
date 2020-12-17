@@ -2,7 +2,13 @@ import { RequestHandler } from 'express';
 
 import { logger } from '../../configs';
 import { UserModel, VerificationCodeModel } from '../../models';
-import { HttpStatusCodes, SignupRequestPayload, ApiError, User, VerificationCode } from '../../common';
+import {
+  HttpStatusCodes,
+  SignupRequestPayload,
+  ApiError,
+  User,
+  VerificationCode
+} from '../../common';
 import { mailerClient, hashPassword } from '../util';
 
 export const signupUser: RequestHandler = async (req, res, next) => {
@@ -11,20 +17,31 @@ export const signupUser: RequestHandler = async (req, res, next) => {
   try {
     await UserModel.findOne({ email }, 'email', async (_err, user) => {
       if (user !== null) {
-        res.status(HttpStatusCodes.BadRequest).json({ message: 'The email is already registered!' });
+        res
+          .status(HttpStatusCodes.BadRequest)
+          .json({ message: 'The email is already registered!' });
         return;
       }
 
       const createdUser: User = await UserModel.create({
         firstName,
         lastName,
+        phone: '',
         password: hashPassword(password),
-        email
+        email,
+        isActivated: true,
+        _requests: []
       });
 
-      const verificationCode: VerificationCode = await VerificationCodeModel.create({ _user: createdUser.id });
+      const verificationCode: VerificationCode = await VerificationCodeModel.create({
+        _user: createdUser.id
+      });
 
-      await mailerClient.sendAccountActivation(createdUser.firstName, createdUser.email, verificationCode.id);
+      await mailerClient.sendAccountActivation(
+        createdUser.firstName,
+        createdUser.email,
+        verificationCode.id
+      );
 
       res.status(HttpStatusCodes.Created).json({ message: 'Signed up' });
     });

@@ -11,7 +11,7 @@ import {
 } from '../../common';
 
 export const searchApartments: RequestHandler = async (req, res, next) => {
-  const query = req.query as SearchApartmentRequestQuery;
+  const query = (req.query as unknown) as SearchApartmentRequestQuery;
 
   const { limit, offset }: Pagination = query.pagination;
 

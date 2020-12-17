@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="385a7216-d032-4118-b67c-d74045aacfd4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/common/dictionary/HttpStatusCodes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/common/dictionary/HttpStatusCodes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/configs/variables.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/configs/variables.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middlewares/account/signupUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middlewares/account/signupUser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/middlewares/util/validate.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middlewares/util/validate.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1j3ZthYHvJgn1FJteU80fDuu03V" />
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="385a7216-d032-4118-b67c-d74045aacfd4" name="Default Changelist" comment="" />
+      <created>1603034955870</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1603034955870</updated>
+      <workItem from="1603034958542" duration="119000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="945" y="331" key="search.everywhere.popup" timestamp="1603035187698">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="945" y="331" key="search.everywhere.popup/-1440.616.1440.900/0.0.2560.1440@0.0.2560.1440" timestamp="1603035187698" />
+  </component>
+</project>

@@ -7,7 +7,7 @@ export const validate = (validations: ValidationChain[]): RequestHandler => {
   return async (req, res, next) => {
     for (const key in req.query) {
       try {
-        req.query[key] = JSON.parse(req.query[key]);
+        req.query[key] = JSON.parse(req.query[key] as string);
       } catch {}
     }
     await Promise.all(validations.map(validation => validation.run(req)));
