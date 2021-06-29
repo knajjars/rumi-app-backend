@@ -1,7 +1,6 @@
 # Rumi App (server)
 
-API for a side project where users can search and apply for student apartments in Costa Rica.
-
+API for a side project where users can search and apply for student apartments
 ## Stack used
 
 - TypeScript
